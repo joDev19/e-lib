@@ -1,0 +1,44 @@
+# Frontend
+# Logs
+logs
+e-lib-frontend/*.log
+e-lib-frontend/npm-debug.log*
+e-lib-frontend/yarn-debug.log*
+e-lib-frontend/yarn-error.log*
+e-lib-frontend/pnpm-debug.log*
+e-lib-frontend/lerna-debug.log*
+
+e-lib-frontend/node_modules
+e-lib-frontend/.DS_Store
+e-lib-frontend/dist
+e-lib-frontend/dist-ssr
+e-lib-frontend/coverage
+e-lib-frontend/*.local
+
+# Editor directories and files
+e-lib-frontend/.vscode/*
+e-lib-frontend/!.vscode/extensions.json
+e-lib-frontend/.idea
+e-lib-frontend/*.suo
+e-lib-frontend/*.ntvs*
+e-lib-frontend/*.njsproj
+e-lib-frontend/*.sln
+e-lib-frontend/*.sw?
+
+e-lib-frontend/*.tsbuildinfo
+
+e-lib-frontend/.eslintcache
+
+# Cypress
+e-lib-frontend/cypress/videos/
+e-lib-frontend/cypress/screenshots/
+
+# Vitest
+e-lib-frontend/__screenshots__/
+
+# Vite
+e-lib-frontend/*.timestamp-*-*.mjs
+
+
+# Backend
+e-lib-backend/node_modules

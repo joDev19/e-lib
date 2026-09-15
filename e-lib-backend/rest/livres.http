@@ -1,0 +1,20 @@
+GET http://localhost:3000/e-lib/livres
+
+###
+
+POST http://localhost:3000/e-lib/livres
+content-type: application/json
+
+{
+  "titre": "New_livre",
+  "auteur": "albert"
+}
+
+###
+PUT http://localhost:3000/e-lib/livres
+content-type: application/json
+
+{
+  "titre": "New",
+  "auteur": "Student modified",
+}

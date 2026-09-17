@@ -6,8 +6,9 @@ POST http://localhost:3000/e-lib/livres
 content-type: application/json
 
 {
-  "titre": "New_livre",
-  "auteur": "albert"
+  "titre": "exellence",
+  "auteur": "alphonce",
+  "date_publication": "18/09/2026"
 }
 
 ###
@@ -18,3 +19,7 @@ content-type: application/json
   "titre": "New",
   "auteur": "Student modified",
 }
+
+###
+
+DELETE http://localhost:3000/e-lib/livres/19

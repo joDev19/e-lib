@@ -1,0 +1,25 @@
+GET http://localhost:3000/e-lib/livres
+
+###
+
+POST http://localhost:3000/e-lib/livres
+content-type: application/json
+
+{
+  "titre": "exellence",
+  "auteur": "alphonce",
+  "date_publication": "18/09/2026"
+}
+
+###
+PUT http://localhost:3000/e-lib/livres
+content-type: application/json
+
+{
+  "titre": "New",
+  "auteur": "Student modified",
+}
+
+###
+
+DELETE http://localhost:3000/e-lib/livres/19

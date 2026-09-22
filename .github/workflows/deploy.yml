@@ -39,4 +39,4 @@ jobs:
         with:
           context: ./e-lib-frontend
           push: true
-          tags: ghcr.io/elibfrontend:latest
+          tags: ghcr.io/jodev19:latest

@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
+
 import { getLivres, createLivre, deleteLivre } from "../services/livres.services";
+
 
 export async function getLivresController(req: Request, res: Response) {
     try {
@@ -45,5 +47,16 @@ export async function deleteLivreController(
         res.status(500).json({
             message: "Erreur lors de la suppression du livre"
         });
+    }
+}
+
+export async function getLivreController(req: Request, res: Response) {
+    try {
+        const id = Number(req.params.id);
+        const livre = await getLivre(id);
+        res.status(200).json(livre);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Erreur de la recuperation des livres" });
     }
 }

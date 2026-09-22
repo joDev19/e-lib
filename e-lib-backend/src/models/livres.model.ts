@@ -36,3 +36,10 @@ export async function deleleLivre(idlivre: number){
     );
     return result
 }
+
+export async function getLivre(idlivre: number): Promise<Livre[]> {
+    const [rows] = await pool.query<Livre[]>(
+        "select * FROM livres where id=?", [idlivre]
+    );
+    return rows;
+}

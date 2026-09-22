@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'frontend/**'
-      - '.github/workflows/ci-cd.yml'
+      - '.github/workflows/deploy.yml'
 
 env:
   REGISTRY: ghcr.io

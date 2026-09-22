@@ -23,28 +23,47 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100">
-                        <tr v-for="i in 16" :key="i" class="hover:bg-gray-50 transition">
-                            <td class="py-3 px-4 font-medium text-gray-900">
-                                <div class="flex items-center gap-2">
-                                    <FontAwesomeIcon :icon="faBook" class="text-gray-400" />
-                                    <span>La chèvre de mon père</span>
-                                </div>
-                            </td>
-                            <td class="py-3 px-4">Jordy G.</td>
-                            <td class="py-3 px-4">10/10/2010</td>
-                            <td class="py-3 px-4">
-                                <span
-                                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
-                                    Disponible
-                                </span>
-                            </td>
-                            <td class="py-3 px-4 text-right">
-                                <button class="text-blue-600 hover:text-blue-800 font-medium hover:underline">
-                                    Voir détails
-                                </button>
-                            </td>
-                        </tr>
+                        <template v-if="isLoading" class="">
+                            <p>Loading...</p>
+                        </template>
+                        <template v-else>
+                            <template v-if="books.length > 0">
+                                <tr v-for="book in books" :key="book.id" class="hover:bg-gray-50 transition">
+                                    <td class="py-3 px-4 font-medium text-gray-900">
+                                        <div class="flex items-center gap-2">
+                                            <FontAwesomeIcon :icon="faBook" class="text-gray-400" />
+                                            <span>{{ book.titre }}</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-3 px-4">{{ book.auteur }}</td>
+                                    <td class="py-3 px-4">{{
+                                        book.date_publication.split("T")[0].split("-").reverse().join("-")
+                                    }}</td>
+                                    <td class="py-3 px-4">
+                                        <span v-if="book.disponible == 1"
+                                            class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
+                                            Disponible
+                                        </span>
+                                        <span v-else
+                                            class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
+                                            Indisponible
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-4 text-right">
+                                        <button class="text-blue-600 hover:text-blue-800 font-medium hover:underline">
+                                            Voir détails
+                                        </button>
+                                    </td>
+                                </tr>
+                            </template>
+                            <template v-else>
+                                <p>Auncun livres trouvé...</p>
+                            </template>
+                        </template>
+
                     </tbody>
+
+
                 </table>
             </div>
         </div>
@@ -54,6 +73,23 @@
 <script setup>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
+import { onMounted, ref } from 'vue';
+import axios from "axios";
+
+const books = ref([]);
+const isLoading = ref(true);
+onMounted(() => {
+    axios.get("http://localhost:3000/books")
+        .then((data) => {
+            books.value = data.data;
+        })
+        .catch(() => {
+            alert("An error occured");
+        })
+        .finally(() => {
+            isLoading.value = false;
+        })
+})
 </script>
 
 <style lang="scss" scoped></style>

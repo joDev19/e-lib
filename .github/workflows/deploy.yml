@@ -33,10 +33,17 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Format repository name to lowercase
+        run: |
+          REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          echo "IMAGE_BASE=ghcr.io/${REPO_LOWER}-frontend" >> $GITHUB_ENV
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
           context: ./e-lib-frontend
           push: true
-          tags: ghcr.io/jodev19:latest
+          tags: |
+            ${{ env.IMAGE_BASE }}:latest
+            ${{ env.IMAGE_BASE }}:${{ github.sha }}

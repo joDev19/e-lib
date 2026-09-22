@@ -1,4 +1,4 @@
-import { getAllLivres, createLivre as createLivreModel,deleleLivre as deleteLivreModel} from "../models/livres.model";
+import { getAllLivres, createLivre as createLivreModel,deleleLivre as deleteLivreModel,getLivre as getLivreModel} from "../models/livres.model";
 
 export async function getLivres() {
     const livres = await getAllLivres();
@@ -12,5 +12,10 @@ export async function createLivre(titre: string, auteur: string,date_publication
 
 export async function deleteLivre(idlivre: number) {
     const livre = await deleteLivreModel(idlivre);
+    return livre;
+}
+
+export async function getLivre(idlivre: number) {
+    const livre = await getLivreModel(idlivre);
     return livre;
 }

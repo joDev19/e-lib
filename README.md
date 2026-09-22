@@ -1,2 +1,2 @@
 # e-lib
-Gestion d'une bibliothèque.
+Gestion d'une bibliothèque
